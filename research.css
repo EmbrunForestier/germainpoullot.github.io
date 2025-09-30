@@ -97,6 +97,8 @@ th {
 
 .justif_text {
   text-align: justify;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .seperator {
@@ -105,24 +107,17 @@ th {
 
 td {
   text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-
-p {
-  padding-left: 20px;
-}
-h1 {
-  padding-left: 20px;
-}
-h2 {
-  padding-left: 20px;
-}
-h3 {
+p, h1, h2, h3, table {
   padding-left: 20px;
 }
 table {
-  padding-left: 20px;
+  padding-right: 20px;
 }
+
 
 body{
   padding-top:90px;
@@ -238,5 +233,4 @@ aside > p {
 .unavailable {
   color: pink;
   cursor: not-allowed;
-
 }
