@@ -108,12 +108,14 @@ th {
 td {
   text-align: center;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 20px;
 }
 
 p, h1, h2, h3, table {
   padding-left: 20px;
+  padding-right: 20px;
 }
+
 table {
   padding-right: 20px;
 }
@@ -233,4 +235,17 @@ aside > p {
 .unavailable {
   color: pink;
   cursor: not-allowed;
+}
+
+.test {
+  height: 200px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(48, 69, 92, 0.3);
+  text-align: center;
 }
