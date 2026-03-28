@@ -193,6 +193,12 @@ body{
   padding-right: 20px;
 }
 
+.img-right {
+  float: right;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 
 
 
