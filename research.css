@@ -194,7 +194,7 @@ body{
 }
 
 .img-right {
-  float: center;
+  float: right;
   padding-left: 20px;
   padding-right: 20px;
 }
