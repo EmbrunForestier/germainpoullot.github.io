@@ -1,0 +1,361 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage[T1]{fontenc}
+\usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, dsfont, mathrsfs, wasysym, graphics, graphicx, xcolor, url, hyperref, hypcap, xargs, multicol, pdflscape, multirow, hvfloat, array, ae, aecompl, pifont, mathtools, a4wide, float, blkarray, overpic, nicefrac, stmaryrd, anyfontsize, yfonts, array, tabularx}
+\usepackage{xargs, bbm, enumerate, paralist, totcount, etoolbox, xfp}
+\usepackage[shortlabels, inline]{enumitem}
+\usepackage{pdflscape}
+\usepackage[noabbrev,capitalise]{cleveref}
+\usepackage[normalem]{ulem}
+\usepackage{marginnote}
+
+\hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue}
+
+% math special letters
+\newcommand{\R}{\mathbb{R}} % reals
+\newcommand{\Q}{\mathbb{Q}} % rationals
+\newcommand{\N}{\mathbb{N}} % naturals
+\newcommand{\Z}{\mathbb{Z}} % integers
+\newcommand{\C}{\mathbb{C}} % complex
+% \newcommand{\I}{\mathbb{I}} % set of integers
+\newcommand{\HH}{\mathbb{H}} % hyperplane
+\newcommand{\K}{k} % field
+
+\newcommand{\f}[1]{{\mathfrak{#1}}} % mathfrak letters
+\let\ccc\c
+\renewcommand{\c}[1]{{\mathcal{#1}}} % call letters
+\renewcommand{\b}[1]{{\boldsymbol{#1}}} % bold letter
+\newcommand{\scr}[1]{{\mathscr{#1}}} % curly letter
+\newcommand{\go}[1]{{\textgoth{#1}}} % gothic letter
+
+\renewcommand{\emptyset}{\varnothing} % prettier emptyset
+\renewcommand{\epsilon}{\varepsilon} % prettier epsilon
+
+% math commands
+\newcommand{\set}[2]{\left\{ #1 \;\middle|\; #2 \right\}} % set notation
+\newcommand{\bigset}[2]{\big\{ #1 ~;~ #2 \big\}} % big set notation
+\newcommand{\Bigset}[2]{\Big\{ #1 ~;~ #2 \Big\}} % Big set notation
+\newcommand{\setangle}[2]{\left\langle #1 \;\middle|\; #2 \right\rangle} % set notation
+\newcommand{\ssm}{\smallsetminus} % small set minus
+\newcommand{\inner}[1]{\left\langle#1\right\rangle}
+\newcommand{\dotprod}[2]{\inner{#1,~#2}} % dot product
+\newcommand{\bigdotprod}[2]{\big\langle \, #1 \; \big| \; #2 \, \big\rangle} % dot product
+\newcommand{\symdif}{\,\triangle\,} % symmetric difference
+\newcommand{\eqdef}{\coloneqq}%{\mbox{\,\raisebox{0.2ex}{\scriptsize\ensuremath{\mathrm:}}\ensuremath{=}\,}} % :=
+\newcommand{\defeq}{\mbox{~\ensuremath{=}\raisebox{0.2ex}{\scriptsize\ensuremath{\mathrm:}} }} % =:
+\renewcommand{\implies}{\Rightarrow} % imply sign
+
+% operators
+\DeclareMathOperator{\conv}{conv} % convex hull
+\DeclareMathOperator{\vect}{vect} % linear span
+\DeclareMathOperator{\cone}{cone} % cone hull
+\DeclareMathOperator{\vol}{vol} % volume
+
+
+% others
+\newcommand{\ie}{\textit{i.e.}~} % id est
+\newcommand{\eg}{\textit{e.g.}~} % exempli gratia
+\newcommand{\Eg}{\textit{E.g.}~} % exempli gratia
+\newcommand{\cf}{\textit{cf.}~} % confer
+\newcommand{\apriori}{\textit{a priori}} % a priori
+\newcommand{\viceversa}{\textit{vice versa}} % vice versa
+\newcommand{\versus}{\textit{vs.}~} % versus
+\newcommand{\aka}{\textit{a.k.a.}~} % also known as
+\newcommand{\perse}{\textit{per se}} % per se
+\definecolor{darkblue}{rgb}{0,0,0.7} % darkblue color
+\definecolor{green}{RGB}{57,181,74} % green color
+\definecolor{violet}{RGB}{147,39,143} % violet color
+\newcommand{\red}{\color{red}} % red command
+\newcommand{\blue}{\color{blue}} % blue command
+\newcommand{\orange}{\color{orange}} % orange command
+\newcommand{\green}{\color{green}} % green command
+\newcommand{\darkblue}{\color{darkblue}} % darkblue command
+\newcommand{\defn}[1]{\textsl{\darkblue #1}} % emphasis of a definition
+\newcommand{\mathdefn}[1]{{\darkblue #1}} % emphasis of a definition
+\newcommand{\yes}{\textcolor{green}{\ding{52}}}
+\newcommand{\no}{\textcolor{red}{\ding{55}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Polytope
+\newcommand{\pol}[1][P]{\mathsf{#1}}%polytope
+\newcommand{\polQ}{{\pol[Q]}}
+\newcommand{\polF}{{\pol[F]}}
+\newcommand{\polC}{{\pol[C]}}
+\newcommand{\polR}{{\pol[R]}}
+\newcommand{\polS}{{\pol[S]}}
+\newcommand{\polT}{{\pol[T]}}
+
+\newcommand{\verts}{V}
+\newcommand{\facets}{F}
+\newcommand{\edges}{E}
+
+\newcommand{\simplex}{\pol[\Delta]} %simplex
+\newcommand{\cube}[1][n]{\pol[\square]_{#1}}
+\newcommandx{\ZG}[1][1=G]{\pol[Z]_{#1}} %Graphical zonotope
+\newcommand{\permuto}[1][n]{\pol[\Pi]_{#1}} %Permutahedron
+
+\newcommand{\PH}[1][\H]{\pol_{#1}}
+
+% Hypergraphs
+\renewcommand{\H}{\c H}
+\newcommand{\reducedH}[1][X]{\c H\left|_{#1}\right.}
+\newcommand{\contractH}[1][X]{\c H/_{(V\ssm #1)}}
+
+
+\newtotcounter{nbProjects}
+\setcounter{nbProjects}{0}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}{\stepcounter{nbProjects}\oldsubsection}
+
+\newtotcounter{nbDone}
+\setcounter{nbDone}{0}
+\newcommand{\done}{\stepcounter{nbDone}}
+
+\newtotcounter{nbWriting}
+\setcounter{nbWriting}{-1}
+\DeclareRobustCommand{\InWriting}{\refstepcounter{nbWriting}\textcolor{red}{$\bullet$}\,}
+
+
+\title{Projects}
+\author{Germain POULLOT}
+\date{Dec. 2025 $\to$ \today}
+
+\begin{document}
+
+ERASE THIS PAGE AFTER READING!
+
+\bigskip
+
+This document is made for tracking what I do, what I've been asked about, etc.
+Nothing is mandatory, everything is fluid, and each sub-section is more or less an idea that would make a paper if I manage to develop it (yet, two sub-sections may be merged into one paper, or one sub-section may lead to several papers).
+I tried to organize these sub-sections into meaningful sections
+
+Each sub-section comes with:
+\begin{compactitem}
+\item a title
+\item some tags (the list of my possible tags and their meaning is on the beginning of next page)
+\item a list of co-authors
+\item maybe one idea that summarizes what the project is about
+\end{compactitem}
+Put the tags in the title, and it will automatically be counted: the total appears under the title of the document (the count on the next page is currently false because of the present page...).
+
+Most likely, the important project have their own Overleaf/TexPage/LaTeX folder, so I don't need to write too much about it.
+Besides, I'm very good at remembering what we've said on a topic, just from the title; and I don't care about re-do fifteen times the same reasoning, so forgetting is not a problem.
+
+Yet, there are some stuffs that I never remember: the status of my submitted papers, so I'm very exhaustive about it.
+My advice, if you re-use this template, is to write the stuffs that you will forget and the stuffs for which forgetting will be a real problem.
+The less you write, the more up-to-date your file will be.
+
+\hrule
+\medskip
+
+The following is are two typical examples of sub-sections:
+
+\subsection*{$\star$ Paths on edge polytope of random graphs}
+with Torben and Martina
+
+cf Overleaf
+
+
+\subsection*{$\circ$ Minkowski decomposability of Johnson solids}
+alone
+
+Acknowledgments:
+Laura Casabella,
+Zoe Geiselmann,
+Frederic Chapoton,
+Arnau Padrol
+
+
+Number of rays (i.e. triangles) of the $\mathbb{DC}$ of regular $(2n+1)$-gon:
+$\frac{n(n+1)(2n+1)}{6}$
+
+$\dots$ of the regular $2n$-gon (segments \& triangles):
+$n + \frac{2n(n-1)(n-2)}{6}$
+
+Remember: re-try implementation with NumberFields
+
+
+\hrule
+\medskip
+
+When I finish a project, it is ``done'', so I put it in the first section.
+I write very thoroughly the tracking info of when it has been submitted where, etc.
+
+Such a sub-section finishes by ``$\backslash$done'': it serve for the automatic counting.
+
+
+
+
+\clearpage
+
+
+
+
+
+\maketitle
+
+
+$\bullet$: just write it!
+
+\InWriting: currently in the writing
+
+$\circ$: alone
+
+$\star$: people are counting on me to do something
+
+$\square$: to be decided exactly what/who goes into the project
+
+$\diamond$: project of other people that I need to watch over a bit (I'm not author)
+
+$-$: too hard
+
+\sout{blah}: done
+
+
+{\centerline{\textbf{Number of current projects}: \total{nbProjects}}}
+
+{\centerline{Among which are done: \total{nbDone} ; versus currently in writing: \fpeval{\totvalue{nbWriting}/2}}
+
+\tableofcontents
+
+\newpage
+
+\setcounter{section}{-1}
+\section{Article done, submitted, etc.}
+
+\subsection{$\star$ \sout{Hamiltonicity of graph of acyclic orientations of a graph}}
+with Leonie M\"uhlherr
+
+On ArXiv (03/09/2026)
+
+$\to$ Submitted to SIDMA (SIAM Journal on Discrete Maths) 15/09/2026 $\to$ rejected 29/09/26
+
+$\to$ \emph{Combinatorial Theory}?
+
+$\to$ FPSAC ?
+
+\done
+
+\subsection{$\circ$ \sout{Vertices of the monotone path polytopes of hypersimplices}}
+Alone
+
+Rejected \emph{European Journal of Combinatorics} 
+
+Submitted \emph{Electronic Journal of Combinatorics} (03/09/2026)
+(submitted with the review of the previous submission to \euro JC).
+
+($\to$ Discrete \& Combinatorial Geometry next?)
+
+\done
+
+\subsection{\sout{Unimodality of the number of paths per length on polytopes}}
+with Martina
+
+Accepted \emph{International Mathematics Research Notices}
+
+\done
+
+
+
+\newpage
+
+\section{Hypergraphs, hypergraphic polytopes}
+
+\subsection{\InWriting $\star$ Diameter of hypergraphic polytopes}
+With Félix, ongoing
+
+cf Overleaf
+
+\subsection{$\circ$ Random hypergraphic polytopes}
+alone
+
+Erd\"os-R\'enyi style!
+
+\subsection{Code a nice class}
+
+Good luck
+
+
+\newpage
+\section{3D polytopes}
+
+\subsection{$\circ$ Minkowski decomposability of Johnson solids}
+alone
+
+Acknowledgments:
+Laura Casabella,
+Zoe Geiselmann,
+Frederic Chapoton,
+Arnau Padrol
+
+
+Number of rays (i.e. triangles) of the $\mathbb{DC}$ of regular $(2n+1)$-gon:
+$\frac{n(n+1)(2n+1)}{6}$
+
+$\dots$ of the regular $2n$-gon (segments \& triangles):
+$n + \frac{2n(n-1)(n-2)}{6}$
+
+Remember: re-try implementation with NumberFields
+
+\subsection{$-$ Fibonacci number of paths for 3D polytopes}
+alone? with Dan?
+
+Stuck
+
+
+\newpage
+\section{Indecomposability}
+\subsection{$-$ Smilansky conjecture 2}
+with Arnau?
+
+Find an indecomposable polytope with ``few'' vertices in regards of its number of facets, in dimension $\geq 5$
+
+annoying...
+
+
+\subsection{$\circ$ $-$ An edge-dependencies style proof that $\mathbb{DC}($Asso$)$ is simplicial}
+with Arnau?
+
+no clue
+
+
+\newpage
+\section{Submodular cone, deformation cones}
+\subsection{$\star$ Smooth polygons with simplicial deformation cone}
+
+with Veronica Calvo Cortes
+
+Use Oda's decomposition theorem.
+
+Short paper, easy.
+
+\subsection{$\circ$ Face-closed classes are negligible inside $\mathbb{SC}_n$}
+
+Be careful : property should only depend on normal fan.
+
+Examples: simple, bounded degree exedence, 
+
+Easy to prove that the opposite class has $\geq 2^{2^n}$ elements.
+
+\subsection{$\circ$ Size of $\c E(\permuto, \permuto)$}
+
+Between $3\cdot 2^{n+1} - 2$ and $2^{(n+1)\cdot (n+1)!}$, but I need better.
+
+If size ``small'', \ie same (or smaller) size as $\scr L(\mathbb{SC}_n^2)$, then the bound on the number of total faces of $\mathbb{SC}_n$ (and hence of rays), is doubly-exponential, \ie far better.
+
+hard ?
+
+\newpage
+\section{Random polytopes}
+\subsection{\InWriting $\star$ Paths on edge polytope of random graphs}
+with Torben and Martina
+
+cf Overleaf
+
+\end{document}
